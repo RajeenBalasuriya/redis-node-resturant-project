@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post("/",validate(ResturantSchema),async(req,res)=>{
     const data =req.body as Resturant;
+    await
     res.send("List of Restaurants");
 })
 
