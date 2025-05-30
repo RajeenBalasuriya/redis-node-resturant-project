@@ -4,7 +4,7 @@ let client : RedisClientType|null=null;
 
 export async function intializeRedisClient(){
     if(!client){
-        client = createClient();
+     const client =  createClient();
 
         //on error , following code will be executed
         client.on("error",(err)=>{
@@ -18,4 +18,5 @@ export async function intializeRedisClient(){
 
         await client.connect();
     }
+    return client;
 }
