@@ -1,4 +1,4 @@
-export function getKeyName(...args: string[]) {
+export function getKeyName(...args: string[] ) {
   return `bites:${args.join(":")}`;
 }
 
