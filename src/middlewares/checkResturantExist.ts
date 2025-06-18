@@ -2,23 +2,20 @@ import type { Request,Response,NextFunction } from "express";
 import { intializeRedisClient } from '../utils/client.js';
 import { getRestaurantKey } from '../utils/keys.js';
 import { errorResponse } from "../utility/responses.js";
+import type { Params } from "../interfaces/params.interface.js";
 
 
-interface Params {
-  resturantid: string;
-}
 
 export const checkResturantExists=async(req:Request<Params>,res:Response,next:NextFunction)=>{
-    const { resturantid } = req.params;
+    const { resturantId } = req.params;
     
-
-    
-    if(!resturantid){
+  
+    if(!resturantId){
         errorResponse(res,400,"Resturant ID Not Found");
         return;
     }
     const client = await intializeRedisClient();
-    const resturantKey = getRestaurantKey(resturantid);
+    const resturantKey = getRestaurantKey(resturantId);
     //check a particular key exists in redis db 
     const exists = await client.exists(resturantKey);
 
